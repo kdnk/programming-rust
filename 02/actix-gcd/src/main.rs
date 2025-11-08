@@ -4,7 +4,6 @@ use serde::Deserialize;
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
     println!("Serving on http://localhost:3000...");
-
     HttpServer::new(|| {
         App::new()
             .route("/", web::get().to(get_index))
