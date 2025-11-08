@@ -91,16 +91,28 @@ fn main() {
     // }
     // f8();
 
-    fn f9() {
-        struct Label {
-            number: u32,
-        }
-        fn print(l: Label) {
-            println!("STAMP: {}", l.number);
-        }
-        let l = Label { number: 3 };
-        print(l);
-        // println!("My label number is: {}", l.number);
+    // fn f9() {
+    //     struct Label {
+    //         number: u32,
+    //     }
+    //     fn print(l: Label) {
+    //         println!("STAMP: {}", l.number);
+    //     }
+    //     let l = Label { number: 3 };
+    //     print(l);
+    //     // println!("My label number is: {}", l.number);
+    // }
+    // f9();
+
+    use std::rc::Rc;
+    fn f10() {
+        let s: Rc<String> = Rc::new("shirataki".to_string());
+        let t: Rc<String> = s.clone();
+        let u: Rc<String> = s.clone();
+
+        assert!(s.contains("shira"));
+        assert_eq!(t.find("taki"), Some(5));
+        println!("{} are quite chewy, almost bouncy, but lack flavor", u);
     }
-    f9();
+    f10()
 }
