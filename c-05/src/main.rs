@@ -181,4 +181,69 @@ fn main() {
         let v = vec![1, 2, 3];
         let r = &v[1];
     }
+
+    fn f13() {
+        static mut STASH: &i32 = &128;
+        fn f(p: &'static i32) {
+            unsafe {
+                // ここで、p と STASH の生存期間が異なる
+                STASH = p;
+            }
+        }
+
+        static WORTH_POINTING_AT: i32 = 1000;
+        f(&WORTH_POINTING_AT);
+
+        fn g<'a>(p: &'a i32) {}
+        let x = 10;
+        g(&x);
+
+        // fn h(p: &'static i32) {}
+        // let x = 10;
+        // h(&x);
+
+        fn smallest(v: &[i32]) -> &i32 {
+            let mut s = &v[0];
+
+            for r in &v[1..] {
+                if *r < *s {
+                    s = r;
+                }
+            }
+            s
+        }
+
+        // let s;
+        // {
+        //     let parabola = [9, 4, 1, 0, 1, 4, 9];
+        //     s = smallest(&parabola);
+        // }
+        // assert_eq!(*s, 0);
+
+        {
+            let s;
+            let parabola = [9, 4, 1, 0, 1, 4, 9];
+            s = smallest(&parabola);
+            assert_eq!(*s, 0);
+        }
+    }
+
+    fn f14() {
+        #[derive(Debug)]
+        struct S<'a> {
+            r: &'a i32,
+        }
+
+        // let s;
+        // {
+        //     let x = 10;
+        //     s = S { r: &x };
+        //     println!("{:?}", s);
+        // }
+        // assert_eq!(*s.r, 10);
+
+        struct D<'a> {
+            s: S<'a>,
+        }
+    }
 }
