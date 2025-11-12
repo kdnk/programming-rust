@@ -165,4 +165,20 @@ fn main() {
         let r = &factorial(6);
         assert_eq!(r + &1009, 1729);
     }
+
+    fn f11() {
+        {
+            let r;
+            {
+                let x = 1;
+                r = &x;
+                assert_eq!(*r, 1)
+            }
+        }
+    }
+
+    fn f12() {
+        let v = vec![1, 2, 3];
+        let r = &v[1];
+    }
 }
