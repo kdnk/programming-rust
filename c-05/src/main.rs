@@ -264,4 +264,32 @@ fn main() {
         }
         println!("{}", r);
     }
+
+    fn f5_3_7() {
+        struct S<'a, 'b> {
+            x: &'a i32,
+            y: &'b i32,
+        }
+
+        fn sum_r_xy(r: &i32, s: S) -> i32 {
+            r + s.x + s.y
+        }
+    }
+
+    fn f5_4_0() {
+        {
+            let v = vec![4, 8, 19, 27, 34, 10];
+            let r = &v;
+            let aside = v;
+            r[0];
+        }
+        {
+            let v = vec![4, 8, 19, 27, 34, 10];
+            {
+                let r = &v;
+                r[0];
+            }
+            let aside = v;
+        }
+    }
 }
