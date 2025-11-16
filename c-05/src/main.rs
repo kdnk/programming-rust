@@ -276,38 +276,79 @@ fn main() {
         }
     }
 
-    fn f5_4_0() {
-        // {
-        //     let v = vec![4, 8, 19, 27, 34, 10];
-        //     let r = &v;
-        //     let aside = v;
-        //     r[0];
-        // }
-        // {
-        //     let v = vec![4, 8, 19, 27, 34, 10];
-        //     {
-        //         let r = &v;
-        //         r[0];
-        //     }
-        //     let aside = v;
-        // }
-        // {
-        //     fn extend(vec: &mut Vec<f64>, slice: &[f64]) {
-        //         for elt in slice {
-        //             vec.push(*elt);
-        //         }
-        //     }
+    // fn f5_4_0_1() {
+    //     {
+    //         let v = vec![4, 8, 19, 27, 34, 10];
+    //         let r = &v;
+    //         let aside = v;
+    //         r[0];
+    //     }
+    //     {
+    //         let v = vec![4, 8, 19, 27, 34, 10];
+    //         {
+    //             let r = &v;
+    //             r[0];
+    //         }
+    //         let aside = v;
+    //     }
+    //     {
+    //         fn extend(vec: &mut Vec<f64>, slice: &[f64]) {
+    //             for elt in slice {
+    //                 vec.push(*elt);
+    //             }
+    //         }
+    //
+    //         let mut wave = Vec::new();
+    //         let head = vec![0.0, 1.0];
+    //         let tail = [0.0, -1.0];
+    //
+    //         extend(&mut wave, &head);
+    //         extend(&mut wave, &tail);
+    //
+    //         assert_eq!(wave, vec![0.0, 1.0, 0.0, -1.0]);
+    //
+    //         extend(&mut wave, &wave);
+    //     }
+    // }
+
+    fn f5_4_0_2() {
+        // let mut x = 10;
+        // let r1 = &x;
+        // let r2 = &x;
+        // x += 10;
         //
-        //     let mut wave = Vec::new();
-        //     let head = vec![0.0, 1.0];
-        //     let tail = [0.0, -1.0];
+        // let m = &mut x;
         //
-        //     extend(&mut wave, &head);
-        //     extend(&mut wave, &tail);
+        // println!("{}, {}, {}", r1, r2, m);
         //
-        //     assert_eq!(wave, vec![0.0, 1.0, 0.0, -1.0]);
+        // let mut y = 20;
+        // let m1 = &mut y;
+        // let m2 = &mut y;
+        // let z = y;
         //
-        //     extend(&mut wave, &wave);
-        // }
+        // println!("{}, {}, {}", m1, m2, z);
+        //
+        // let mut w = (107, 109);
+        // let r = &w;
+        // let r0 = &r.0;
+        // let m1 = &mut r.1;
+        //
+        // println!("{}", r0);
+
+        let mut v = (136, 139);
+        let m = &mut v;
+        let m0 = &mut m.0;
+        *m0 = 137;
+
+        let r0 = &m.0;
+        let r1 = &m.1;
+
+        // v.1;
+
+        println!("{:?}", m);
+        println!("{}", r0);
+        println!("{}", r1);
     }
+
+    f5_4_0_2();
 }
