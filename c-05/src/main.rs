@@ -347,5 +347,11 @@ fn main() {
         println!("{}", r1);
     }
 
-    f5_4_0_2();
+    fn f5_4_0_3() {
+        let mut x = 42;
+        let p = &x;
+        assert_eq!(*p, 42);
+        // x += 1;
+        assert_eq!(*p, 42);
+    }
 }
