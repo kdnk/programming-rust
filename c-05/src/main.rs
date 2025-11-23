@@ -340,13 +340,10 @@ fn main() {
         let m0 = &mut m.0;
         *m0 = 137;
 
-        let r0 = &m.0;
         let r1 = &m.1;
 
         // v.1;
 
-        println!("{:?}", m);
-        println!("{}", r0);
         println!("{}", r1);
     }
 
