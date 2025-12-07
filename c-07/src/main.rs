@@ -1,4 +1,4 @@
-use std::io;
+use std::io::{self};
 
 fn main() {
     fn f7_1_1() {
