@@ -1,3 +1,5 @@
+mod queue;
+
 fn main() {
     println!("Hello, world!");
 }
@@ -21,4 +23,14 @@ fn chop(b: Broom) -> (Broom, Broom) {
         height: b.height / 2,
         ..b
     };
+
+    let mut boom2 = Broom {
+        name: boom1.name.clone(),
+        ..boom1
+    };
+
+    boom1.name.push_str(" I");
+    boom2.name.push_str(" II");
+
+    (boom1, boom2)
 }
