@@ -15,6 +15,15 @@ fn main() {
     let (older, younger) = q.split();
     assert_eq!(older, vec!['D']);
     assert_eq!(younger, vec!['X']);
+
+    let mut q2 = Queue::new();
+    let mut q3 = Queue::new();
+
+    q2.push("CAD");
+    q3.push(0.74);
+
+    q2.push("BTC");
+    q3.push(13764.0);
 }
 
 struct Broom {
