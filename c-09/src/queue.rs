@@ -1,6 +1,6 @@
 pub struct Queue {
-    older: Vec<char>,
-    younger: Vec<char>,
+    pub older: Vec<char>,
+    pub younger: Vec<char>,
 }
 
 impl Queue {
@@ -19,5 +19,9 @@ impl Queue {
         }
 
         self.older.pop()
+    }
+
+    pub fn split(self) -> (Vec<char>, Vec<char>) {
+        (self.older, self.younger)
     }
 }

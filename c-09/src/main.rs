@@ -1,7 +1,20 @@
+use queue::Queue;
+
 mod queue;
 
 fn main() {
-    println!("Hello, world!");
+    let mut q = Queue {
+        older: Vec::new(),
+        younger: Vec::new(),
+    };
+    q.push('P');
+    q.push('D');
+    assert_eq!(q.pop(), Some('P'));
+    q.push('X');
+
+    let (older, younger) = q.split();
+    assert_eq!(older, vec!['D']);
+    assert_eq!(younger, vec!['X']);
 }
 
 struct Broom {
